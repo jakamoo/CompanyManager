@@ -1,0 +1,36 @@
+server:
+  port: ${PORT:8181}
+spring:
+  application:
+    name: company
+  profiles:
+    active: development
+  main:
+    banner-mode: off
+    allow-circular-references: true
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 30MB
+
+  datasource:
+    url: jdbc:h2:mem:mydb
+    driverClassName: org.h2.Driver
+
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+        enable_lazy_load_no_trans: true
+      jakarta:
+        persistence:
+          query.timeout: 10000
+
+
+
+
